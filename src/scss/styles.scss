@@ -1,0 +1,46 @@
+body{
+    font-family: 'Open Sans', sans-serif;
+    font-weight: bold;
+}
+
+.main{
+    background-color: #F2F2F2;
+    border-radius: 0 0 5px 5px;
+    padding: 20px;
+}
+
+.forms{
+    margin: 15px;
+    background-color: #979696;
+    color: #ffffff;
+    border-radius: 5px;
+    padding-bottom: 20px;
+}
+
+.result{
+    margin: 15px;
+    background-color: #C3C3C3;
+    border-radius: 5px;
+    color: #ffffff;
+}
+
+.signup-input{
+    width: 50%;
+    margin: 0 auto;
+}
+a{
+    color: lightblue;
+}
+
+a:hover{
+    text-decoration: none;
+}
+
+.block{
+    display: block;
+    margin-top: 5px;
+}
+
+.yellow{
+    color: yellow;
+}

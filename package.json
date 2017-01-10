@@ -1,0 +1,16 @@
+{
+  "name": "sign-in-sign-up-view",
+  "version": "1.0.0",
+  "description": "A view layer for an application that allows a user to Sign In and Sign Up. Made with Vue.Js",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Tom Slinger",
+  "license": "ISC",
+  "devDependencies": {
+    "browser-sync": "^2.18.6",
+    "gulp": "^3.9.1",
+    "gulp-sass": "^3.1.0"
+  }
+}

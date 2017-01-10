@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <!--Bootstrap-->
+        <link rel="stylesheet" href="css/bootstrap.css">
+        <!--Custom Styling-->
+        <link rel="stylesheet" href="css/styles.css">
+        <!--Font Awesome-->
+        <script src="https://use.fontawesome.com/3391c56563.js"></script>
+        <!--Google Fonts-->
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+        <title>Sign In / Sign Up View</title>
+    </head>
+    <body>
+        <div class="container main" id="app">
+            <div class="row text-center">
+                <div class="col-md-6">
+                    <h3>Are you an existing User?</h3>
+                    <p>If you have an account, sign in with your email address.</p>
+                    <button class="btn btn-lg btn-info" @click="showSignIn">Sign In</button>
+                </div>
+                <div class="col-md-6">
+                    <h3>Are you a new User?</h3>
+                    <p>Creating an account has many benefits...</p>
+                    <button class="btn btn-lg btn-info" @click="showSignUp">Sign Up</button>
+                </div>
+            </div>
+            <div class="row text-center forms">
+                <div class="col-md-12" v-if="emptyForm">
+                    <h1>Welcome</h1>
+                    <p>Please click one of the above buttons to start.</p>
+                    <p>This view was created by <a href="https://github.com/tomSlinger">Tom Slinger</a>.</p>
+                    <p>Both forms have the appropriate validation applied.</p>
+                    <p>Once submitted, data will be shown below.</p>
+                </div>
+                <div class="col-md-12" v-if="signInBtnClicked">
+                    <h1>Sign In</h1>
+                    <form class="form-horizontal" v-on:submit.prevent>
+                        <div class="form-group">
+                            <label for="signInEmail">Email Address:</label>
+                            <input type="email" class="form-control signup-input" id="signInEmail" v-model="signInEmail" />
+                            <small class="block yellow" v-if="correctSignInEmail">Please enter your Email Address.</small>
+                        </div>
+                        <div class="form-group">
+                            <label for="signInPassword">Password:</label>
+                            <input type="password" class="form-control signup-input" id="signInPassword" v-model="signInPassword" />
+                            <small class="block yellow" v-if="correctSignInPass">Please enter your Password.</small>
+                        </div>
+                        <button type="submit" class="btn btn-default" @click="signInUser()">Sign In</button>
+                        <small class="block">Upon clicking 'Sign In', your details will only be shown below for 5 seconds.</small>
+                    </form>
+                </div>
+                <div class="col-md-12" v-if="signUpBtnClicked">
+                    <h1>Sign Up</h1>
+                    <form class="form-horizontal" v-on:submit.prevent>
+                        <div class="form-group">
+                            <label for="fname">First Name:</label>
+                            <input type="text" class="form-control signup-input" id="fname" v-model="signUpFName" />
+                            <small class="block yellow" v-if="correctFName">First Name must be more than 2 characters in length.</small>
+                        </div>
+                        <div class="form-group">
+                            <label for="lname">Last Name:</label>
+                            <input type="text" class="form-control signup-input" id="lname" v-model="signUpLName" />
+                            <small class="block yellow" v-if="correctLName">Last Name must be more than 2 characters in length.</small>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email Address:</label>
+                            <input type="email" class="form-control signup-input" id="email" v-model="signUpEmail" />
+                            <small class="block yellow" v-if="correctEmail">Please enter a valid email address.</small>
+                        </div>
+                        <div class="form-group">
+                            <label for="pass1">Password:</label>
+                            <input type="password" class="form-control signup-input" id="pass1" v-model="signUpPassword" />
+                            <small class="block yellow" v-if="matchPass">Passwords do not match. Please try again.</small>
+                            <small class="block yellow" v-else-if="correctPass">Please enter both into both password fields.</small>
+                        </div>
+                        <div class="form-group">
+                            <label for="pass2">Confirm Password:</label>
+                            <input type="password" class="form-control signup-input" id="pass2" v-model="signUpConfirmPassword" />
+                            <small class="block yellow" v-if="matchPass">Passwords do not match. Please try again.</small>
+                            <small class="block yellow" v-else-if="correctPass">Please enter both into both password fields.</small>
+                        </div>
+                        <button type="submit" class="btn btn-default" @click="signUpUser()">Sign Up</button>
+                        <small class="block">Upon clicking 'Sign Up', your details will only be shown below for 10 seconds.</small>
+                    </form>
+                </div>
+            </div>
+            <div class="row text-center result" v-if="isResults">
+                <div v-if="formStatus">
+                    <h1>Your Sign In Details</h1>
+                    <p>Your Email Address: {{ signInEmail }}</p>
+                    <p>Your Password: {{ signInPassword }}</p>
+                </div>
+                <div v-else>
+                    <h1>Your Sign Up Details</h1>
+                    <p>Your First Name: {{ signUpFName }}</p>
+                    <p>Your Last Name: {{ signUpLName }}</p>
+                    <p>Your Email Address: {{ signUpEmail }}</p>
+                    <p>Your Password: {{ signUpPassword}} </p>
+                </div>
+            </div>
+        </div>
+    <script src="js/vue.js"></script>
+    <script src="js/scripts.js"></script>
+    </body>
+</html>
